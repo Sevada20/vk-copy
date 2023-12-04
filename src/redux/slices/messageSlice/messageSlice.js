@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 export const addMessage = createAsyncThunk(
-  "posts/addPost",
+  "message/addMessage",
   async (messageData, { rejectWithValue }) => {
     const db = getFirestore();
     try {
