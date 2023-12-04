@@ -1,0 +1,27 @@
+.menuContainer {
+  margin-top: 15px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 120px;
+  justify-content: center;
+  padding: 30px 50px 30px 20px;
+  background-color: #f0f5fa;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.menuItemContainer svg {
+  width: 20px;
+  height: 20px;
+}
+.menuItemContainer {
+  display: flex;
+  cursor: pointer;
+  margin-top: 10px;
+  color: #62656a;
+}
+.menuItemContainer span {
+  margin-left: 15px;
+  font-size: 16px;
+}

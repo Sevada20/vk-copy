@@ -1,0 +1,38 @@
+.errorContainer {
+  margin-bottom: 50px;
+}
+.mainContainer {
+  border: 1px solid #c1c1c1;
+  border-radius: 15px;
+  width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.messagesContainer {
+  height: 70vh;
+  overflow-y: auto;
+  padding: 10px 10px;
+}
+.inputContainer {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.inputField {
+  width: 90%;
+  padding-left: 8px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  border-radius: 8px;
+}
+.iconContainer {
+  cursor: pointer;
+  display: inline;
+}
+.icon {
+  width: 30px;
+  height: 30px;
+  background-color: #1862bf;
+  border-radius: 50%;
+}

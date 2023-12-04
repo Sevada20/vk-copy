@@ -1,0 +1,40 @@
+.userContainer {
+  margin-top: 15px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 120px;
+  justify-content: center;
+  padding: 30px 50px 30px 20px;
+  background-color: #f0f5fa;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.userItemContainer {
+  display: flex;
+  cursor: pointer;
+  margin-top: 10px;
+  color: #62656a;
+  position: relative;
+}
+.userItemContainer img {
+  border-radius: 50%;
+}
+.userItemContainer svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+}
+.userItemContainer span {
+  margin-left: 15px;
+}
+.statusCircle {
+  width: 8px;
+  height: 8px;
+  background-color: green;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 2px;
+  right: 75px;
+}

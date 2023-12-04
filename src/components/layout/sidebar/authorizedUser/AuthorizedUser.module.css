@@ -1,0 +1,26 @@
+.currentUserContainer {
+  padding: 10px 10px 10px 10px;
+  background-color: #f0f5fa;
+  border-radius: 10px;
+  margin-left: 15px;
+}
+.avatarAndNameContainer {
+  padding: 5px 20px 5px 20px;
+  border: 1px solid #c9d1d8;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+img {
+  border-radius: 50%;
+}
+button {
+  margin-top: 5px;
+  color: blue;
+  border: 0.5px solid #c5ccd3;
+  border-radius: 5px;
+  padding: 5px 3px 5px 3px;
+  cursor: pointer;
+  font-size: 14px;
+}

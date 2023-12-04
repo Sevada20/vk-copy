@@ -1,0 +1,15 @@
+.postsContainer {
+  border-radius: 10px;
+  border: 0.5px solid #c9d1d8;
+  margin-left: 20px;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+.postAvatarContainer {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  gap: 10px;
+}
