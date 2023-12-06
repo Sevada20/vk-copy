@@ -3,16 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "../../../../redux/slices/postSlice/postSlice";
 import { collection, getFirestore, onSnapshot } from "firebase/firestore";
 import styles from "./Posts.module.css";
+import { AppDispatch, RootState } from "../../../../redux/store";
+import { IPostItem } from "../../../../redux/slices/postSlice/types";
 
-const Posts = () => {
-  const dispatch = useDispatch();
+const Posts: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const posts = useSelector((state: RootState) => state.posts.posts);
+
   const db = getFirestore();
-  const posts = useSelector((state) => state.posts.posts);
-
   React.useEffect(() => {
     const unsub = onSnapshot(collection(db, "posts"), (doc) => {
       const newPosts = doc.docs.map((d) => d.data());
-      dispatch(setPosts(newPosts));
+      dispatch(setPosts(newPosts as IPostItem[] | []));
     });
     return () => {
       unsub();

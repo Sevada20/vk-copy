@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Auth.module.css";
+
 import {
   clearUser,
   loginUser,
@@ -9,11 +10,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { users } from "../../layout/sidebar/users/Users";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { AppDispatch, RootState } from "../../../redux/store";
 
-const Auth = () => {
-  const dispatch = useDispatch();
+const Auth: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const { error, status, user } = useSelector((state: RootState) => state.auth);
   const navigate = useNavigate();
-  const { error, status, user } = useSelector((state) => state.auth);
+
   const [isRegForm, setIsRegForm] = React.useState(false);
   const [authData, setAuthData] = React.useState({
     email: "",
@@ -45,7 +48,7 @@ const Auth = () => {
     if (user) navigate("/");
   }, [user]);
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(loginUser({ isRegForm, authData }));
     setAuthData({

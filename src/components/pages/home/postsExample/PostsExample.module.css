@@ -1,0 +1,30 @@
+.postsExampleContainer {
+  border: 1px solid #c1c1c1;
+  border-radius: 15px;
+  width: 88%;
+  margin: 25px 20px 5px 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 10px 10px;
+}
+.imgContainer {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+.imgContainer img {
+  margin: auto;
+  border-radius: 5px;
+}
+
+.spansContainer span:first-of-type {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+@media (max-width: 600px) {
+  .postsExampleContainer img {
+    width: calc(100% - 10px);
+  }
+}

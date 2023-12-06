@@ -2,7 +2,16 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Users.module.css";
 import { TiMessages } from "react-icons/ti";
 import { useSelector } from "react-redux";
-export const users = [
+import { RootState } from "../../../../redux/store";
+
+interface IUser {
+  id: number;
+  avatar: string;
+  name: string;
+  isInNetwork: boolean;
+}
+
+export const users: IUser[] = [
   {
     id: 1,
     avatar:
@@ -26,9 +35,10 @@ export const users = [
   },
 ];
 
-const Users = () => {
+const Users: React.FC = () => {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.user);
+
   return (
     <div className={styles.userContainer}>
       {users.map((userItem) => {

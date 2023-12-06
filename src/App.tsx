@@ -1,12 +1,14 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Home from "./components/pages/home/Home";
 import Auth from "./components/pages/auth/Auth";
 import Messages from "./components/pages/messages/Messages";
 import { useSelector } from "react-redux";
+import { RootState } from "./redux/store";
 
 function App() {
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.user);
   return (
     <BrowserRouter>
       <Routes>
@@ -18,5 +20,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;

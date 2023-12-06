@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./Header.module.css";
 import { IoSearchOutline } from "react-icons/io5";
 
-const Header = () => {
-  const [isFocusedInput, setIsFocusedInput] = React.useState(true);
+const Header: React.FC = () => {
+  const [isFocusedInput, setIsFocusedInput] = React.useState<boolean>(true);
 
-  const handleFocusChange = (focused) => {
+  const handleFocusChange = (focused: boolean) => {
     setIsFocusedInput(focused);
   };
 

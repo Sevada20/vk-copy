@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import * as firebase from "firebase/app";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import App from "./App";
 
 firebase.initializeApp({
   apiKey: "AIzaSyAl3Wpz-g6THQIUhaW3vwZxpLSq3uYWCiI",
@@ -15,7 +15,7 @@ firebase.initializeApp({
   appId: "1:217183731939:web:6623d916bafbc36d57c5d6",
 });
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root") as Element);
 root.render(
   <Provider store={store}>
     <App />

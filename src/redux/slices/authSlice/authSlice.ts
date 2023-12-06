@@ -1,14 +1,15 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import { AuthState, UserData, IUser } from "./types";
 
 export const loginUser = createAsyncThunk(
   "auth/login",
-  async (userData, { rejectWithValue }) => {
+  async (userData: UserData, { rejectWithValue }) => {
     const auth = getAuth();
     if (userData.isRegForm) {
       try {
@@ -18,8 +19,8 @@ export const loginUser = createAsyncThunk(
           userData.authData.password
         );
         await updateProfile(res.user, { displayName: userData.authData.name });
-      } catch (error) {
-        rejectWithValue(error.message);
+      } catch (error: any) {
+        return rejectWithValue(error.message);
       }
     } else {
       try {
@@ -28,14 +29,14 @@ export const loginUser = createAsyncThunk(
           userData.authData.email,
           userData.authData.password
         );
-      } catch (error) {
-        rejectWithValue(error.message);
+      } catch (error: any) {
+        return rejectWithValue(error.message);
       }
     }
   }
 );
 
-const initialState = {
+const initialState: AuthState = {
   user: null,
   status: "idle",
   error: null,
@@ -45,7 +46,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser(state, action) {
+    setUser(state, action: PayloadAction<IUser>) {
       state.user = action.payload;
     },
     clearUser(state) {
@@ -56,12 +57,11 @@ const authSlice = createSlice({
     builder.addCase(loginUser.pending, (state) => {
       state.status = "pending";
     });
-    builder.addCase(loginUser.fulfilled, (state, action) => {
-      state.user = action.payload;
+    builder.addCase(loginUser.fulfilled, (state) => {
       state.status = "succeeded";
     });
 
-    builder.addCase(loginUser.rejected, (state, action) => {
+    builder.addCase(loginUser.rejected, (state, action: any) => {
       state.error = action.payload;
       state.status = "rejected";
     });

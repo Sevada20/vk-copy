@@ -3,7 +3,7 @@ import { dataMenu } from "./dataMenu";
 import styles from "./Menu.module.css";
 import { useNavigate } from "react-router-dom";
 
-const Menu = () => {
+const Menu: React.FC = () => {
   const navigate = useNavigate();
 
   return (

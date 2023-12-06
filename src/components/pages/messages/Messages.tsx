@@ -5,27 +5,31 @@ import { useDispatch } from "react-redux";
 import {
   addMessage,
   setMessages,
-} from "./../../../redux/slices/messageSlice/messageSlice";
+} from "../../../redux/slices/messageSlice/messageSlice";
 import { collection, getFirestore, onSnapshot } from "firebase/firestore";
 import styles from "./Messages.module.css";
+import { AppDispatch, RootState } from "../../../redux/store";
+import { IMessageData } from "./types";
 
-const Messages = () => {
+const Messages: React.FC = () => {
   const db = getFirestore();
-  const [message, setMessage] = useState("");
-  const user = useSelector((state) => state.auth.user);
-  const messagesList = useSelector((state) => state.messages.messagesList);
-  const error = useSelector((state) => state.messages.error);
-  const dispatch = useDispatch();
+  const [message, setMessage] = useState<string>("");
+  const messagesList = useSelector(
+    (state: RootState) => state.messages.messagesList
+  );
+  const user = useSelector((state: RootState) => state.auth.user);
+  const error = useSelector((state: RootState) => state.messages.error);
+  const dispatch: AppDispatch = useDispatch();
 
   const addMessageHandler = () => {
-    dispatch(addMessage({ userId: user.id, message }));
+    user && dispatch(addMessage({ userId: user.id, message }));
     setMessage("");
   };
 
   useEffect(() => {
     const unsub = onSnapshot(collection(db, "messages"), (doc) => {
       const newMessages = doc.docs.map((d) => d.data());
-      dispatch(setMessages(newMessages));
+      dispatch(setMessages(newMessages as IMessageData[] | []));
     });
     return () => {
       unsub();
@@ -41,19 +45,19 @@ const Messages = () => {
               <div
                 style={{
                   marginTop: "10px",
-                  textAlign: msg.userId === user?.id ? "right" : "",
+                  textAlign: msg.userId === user?.id ? "right" : undefined,
                 }}
               >
                 <div
                   style={{
                     display: "flex",
                     justifyContent:
-                      msg.userId === user.id ? "flex-end" : "flex-start",
+                      msg.userId === user?.id ? "flex-end" : "flex-start",
                   }}
                 >
-                  <span style={{ marginRight: "5px" }}>{user.name}</span>
+                  <span style={{ marginRight: "5px" }}>{user?.name}</span>
                   <img
-                    src={user.avatar}
+                    src={user?.avatar}
                     style={{ width: "30px", height: "30px" }}
                   />
                 </div>

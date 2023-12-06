@@ -4,7 +4,7 @@ import Users from "./users/Users";
 import styles from "./Sidebar.module.css";
 import AuthorizedUser from "./authorizedUser/AuthorizedUser";
 
-const Sidebar = () => {
+const Sidebar:React.FC = () => {
   return (
     <div className={styles.sidebarContainer}>
       <AuthorizedUser />

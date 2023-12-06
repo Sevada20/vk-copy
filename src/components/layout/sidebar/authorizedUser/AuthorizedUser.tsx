@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { clearUser } from "../../../../redux/slices/authSlice/authSlice";
+import { RootState } from "../../../../redux/store";
 
-const AuthorizedUser = () => {
+const AuthorizedUser: React.FC = () => {
   const dispatch = useDispatch();
   const auth = getAuth();
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.user);
   return (
     <div className={styles.currentUserContainer}>
       {user ? (
