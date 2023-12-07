@@ -38,3 +38,6 @@
   bottom: 2px;
   right: 75px;
 }
+.userItemContainer span {
+  color: blue;
+}
